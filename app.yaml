@@ -1,0 +1,2 @@
+runtime : ptrhon39
+entrypoint: gunicron -b :$PORT app:app

@@ -2,9 +2,17 @@ from flask import Flask, request, jsonify
 import pandas as pd
 import joblib
 from flask_cors import CORS
+import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app)
+
+# Load environment variables
+load_dotenv()
+
+# Get the port from the environment variable
+app.config['DEBUG'] = os.getenv('FLASK_DEBUG')  
 
 # Load the pre-trained model
 model = joblib.load('churn_model_pipeline.pkl')
